@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="Eaaa, Erhvervsakademi, Multimediedesigner, Grafisk design, Interaktionsspil, uddannelse, Aarhus " >
+    <meta name="description" content="Et interaktionsspil udarbejdet i samarbejde med Erhversakademi Aarhus">
+    <title>EAAA | Webdokumentar</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="https://use.typekit.net/cnx5ftk.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <div id="intro">
+        <video id="introVid" autoplay muted>
+            <source src="images/logoanimkort.webm" type="video/webm">
+        </video>
+    </div>
+    <div id="bubbles">
+        <div class="bubble currentPage"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- 0 FORSIDE KARRUSEL  -->
+    <section id="hero">
+       <a href="#"> <img class="logo_langt" src="images/logo_langt.svg" alt="Logo top"> </a>
+        <p class="overskrifter">Et interaktionsspil udarbejdet i samarbejde med Erhversakademi Aarhus</p>
+        
+
+
+        <div class="karrusel">
+            <div class="HP_Tale">
+                <img class="HP_SOLO" src="images/karrusel/hp_solo.webp" alt="HP">
+                <img class="talebobble" src="images/talebobble.webp" alt="Talebobble">
+            </div>
+        </div>
+
+        <p class="klik-her">Klik på pilen for at gå videre!</p>
+        <svg onclick="arrowClick();" class="pil" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 239.68 137.52">
+            <polyline class="arrow" points="8.84 8.84 119.84 119.84 230.84 8.84"/>
+        </svg>
+    </section>
+
+    <!--  1 SPILLEREGLER  -->
+    <section id="spille_regler">
+      <a href="#hero"><img class="lille-logo" src="images/logo-kort.svg" alt="Erhversakademiets logo"> </a>
+        <h2 class="overskrift_inf"> Interaktionsspil</h2>
+        <h3>Regler og Information</h3>
+            <div id="ikoner" class="forklaring">
+                <div id="ikon-container">
+                    <div class="video-ikon">
+                        <img class="play-knap ikon" src="images/play.svg" alt="play-ikon">
+                        <p>Video</p>
+                    </div>
+                    <div class="lyd-ikon">
+                        <img class="ikon" src="images/lyd.svg" alt="lyd-ikon">
+                        <p>Lyd</p>
+                    </div>
+                    <div class="klik-ikon">
+                        <img class="ikon" src="images/hand.svg" alt="hånd-ikon">
+                        <p>Valg</p>
+                    </div>
+                </div>
+                <br><br>
+                <p class="forklaring-tekst">I løbet af vores interaktions spil vil du møde spillets hovedperson Niclas, som du følger helt til spillets ende. 
+                    I løbet af spillet vil du møde <b>video</b> og <b>lyd</b>, som du skal interagere med. 
+                    Du vil ligeledes få nogle muligheder, som du skal <b>vælge</b> imellem. 
+                    Niclas er nemlig rigtig forvirret omkring uddannelsesvalg - og han skal derfor bruge DIN hjælp. 
+                    Han har nogle klare interesser og mål. Kan du hjælpe ham med at træffe det rigtige valg?</p>
+                <svg onclick="nextRule();" class="next-rule" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 239.68 137.52">
+                    <polyline class="rule-arrow" points="8.84 8.84 119.84 119.84 230.84 8.84"/>
+                </svg>
+            </div>
+            <div id="tree" class="forklaring">
+                <div id="tree-container">
+                    <img src="images/tree.png" alt="tree">
+                    <br><br>
+                    <p class="forklaring-tekst">Hils på din nye ven, <b>stifinderen!</b> <br><br>
+                        Stifinderen er en hjælpende hånd, som følger dig igennem hele spillet og indikerer hvor langt du er i spillet og om du fører Niclas på rette vej.
+                        <br><br>
+                        Vi håber du vil komme til at lide den ligeså meget som os!  
+                        </p>
+                </div>
+                <svg onclick="prevRule();" class="prev-rule" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 239.68 137.52">
+                    <polyline class="rule-arrow" points="8.84 8.84 119.84 119.84 230.84 8.84"/>
+                </svg>
+            </div>
+        <svg onclick="arrowClick();" style="display: none;" id="info-pil" class="pil" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 239.68 137.52">
+            <polyline class="arrow" points="8.84 8.84 119.84 119.84 230.84 8.84"/>
+        </svg>
+    </section>
+
+    <!-- 2 VIDEO AF HP -->
+    <section id="video">
+        <div class="video-container">
+            <video id="niclas-video">
+                <source src="images/intro_video.webm" type="video/webm">
+            </video>
+            <div class="video_overlag">
+                <h2 class="overskrifter">Mød Niclas</h2>
+                <button onclick="playVid(); removeOverlay();" type="button" class="knap">Se videoen!</button>
+            </div>
+            <div class="spil-overlay">
+                <button onclick="startGame();" type="button" class="knap">Spil</button>
+                <button onclick="replayVid();" type="button" class="replay">Afspil igen</button>
+            </div>
+            <button onclick="skipVid();" type="button" class="skip">Skip</button>
+        </div>
+    </section>
+
+    <!-- 3 INFORMATION OM HP  -->
+    <section id="hp-info">
+        <a href="#hero"><img class="lille-logo" src="images/logo-kort.svg" alt="Erhversakademiets logo"> </a>
+        <p class="overskrift_inf">Information om Niclas</p>
+        <div class="begge_kort">
+            <div class="HP_kort">
+                <img src="images/niclas_inf2.webp" alt="Niclas" style="width:100%">
+                <div class="container">
+                    <h4><b>Hvem er Niclas?</b></h4> 
+                    <ul>
+                        <li>Interesserer sig for sport, primært fodbold</li>
+                        <li>Fritiden bliver som oftest brugt i venners selskab</li>
+                        <li>Niclas er kreativ anlagt, har en interesse for design</li>
+                        <li>Har længe benyttet medier og været optaget af disse</li>
+                      </ul> 
+                </div>
+            </div>
+
+            <div class="HP_kort">
+                <img src="images/niclas_inf.webp" alt="Niclas" style="width:100%">
+                <div class="container">
+                    <h4><b>Andet sabbatår -  hvad skal der ske?</b></h4> 
+                    <ul>
+                        <li>20 år gammel, i gang med andet sabbatår</li>
+                        <li>Arbejder fuldtid i Føtex</li>
+                        <li>Drømmer om at starte på en uddannelse, men ved ikke hvilken</li>
+                        <li>Ønsker at finde en uddannelse, som matcher hans interesser</li>
+                      </ul>  
+                </div>
+            </div> 
+        </div>
+        <svg onclick="playStifinder(0, 4);" class="pil" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 239.68 137.52">
+            <polyline class="arrow" points="8.84 8.84 119.84 119.84 230.84 8.84"/>
+        </svg>
+    </section>
+
+    <!-- 4 VALG AF INSTITUTION -->
+    <section id="inst-valg">  
+        <a href="#hero"><img class="lille-logo" src="images/logo-kort.svg" alt="Erhversakademiets logo"> </a>
+        <p class="overskrift_inf">Vælg en institution</p>
+    <p class="trin">Trin 1</p>
+    <div class="begge_kort">
+        <div class="kort">
+            <div class="institution">
+                <img onclick="skoleValg(1);"
+                    src="images/karrusel/aarhus_uni.webp"
+                    alt="Aarhus Universitet"
+                    class="image"
+                    style="width: 100%"
+                />
+                <div class="middle">
+                    <button onclick="skoleValg(1);" type="button" class="text">Vælg</button>
+                </div>
+            </div>
+            <div class="container">
+                <h4><b>Aarhus universitet</b></h4>
+                <ul>
+                    <li>Forelæsninger</li>
+                    <li>Individuelt arbejde</li>
+                    <li>5-årig uddannelse, bachelor og kandidat</li>
+                    <li>Mindre fokus på kombination af teori og praksis</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="kort">
+            <div class="institution">
+                <img onclick="skoleValg(2);"
+                    src="images/guldtand.webp"      
+                    alt="Erhvervsakademi Aarhus" 
+                    class="image" 
+                    style="width: 100%"
+                />
+                <div class="middle">
+                    <button onclick="skoleValg(2);" type="button" class="text">Vælg</button>
+                </div>
+            </div>
+            <div class="container">
+                <h4><b>Erhvervsakademi Aarhus</b></h4>
+                <ul>
+                    <li>Gruppearbejde</li>
+                    <li>Klasseundervisning & Fremlæggelser</li>
+                    <li>2-år inklusiv praktik</li>
+                    <li>Professionsrettet kort videregående uddannelse</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        </section>
+
+    <!-- 5 EAAA VALG AF UDDANNELSE -->
+    <section id="EAAA-udd">
+        <a href="#hero"><img class="lille-logo" src="images/logo-kort.svg" alt="Erhversakademiets logo"> </a>
+        <p class="overskrift_inf">Vælg uddannelse på EAAA</p>
+        <p class="trin">Trin 2</p>
+        <div class="begge_kort raekke">
+            <div class="kort kolonne">
+                <div class="institution">
+                    <img onclick="uddValg(0);"
+                        src="images/uddannelse/datafærdig.webp"
+                        alt="Datamatiker"
+                        class="image"
+                        style="width: 100%">
+
+                    <div class="middle">
+                        <button onclick="uddValg(0);" type="button" class="text">Vælg</button>
+                    </div>
+
+                </div>
+                <div class="container">
+                    <h4><b>Datamatiker</b></h4>
+                    <ul>
+                        <li>Varighed: 2 ½ år</li>
+                        <li>Du får viden om, hvordan man udvikler software, 
+                            dvs. det indhold, der udgør forskellige it-programmer</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="kort kolonne">
+                <div class="institution">
+                    <img onclick="uddValg(1);"
+                        src="images/uddannelse/multifærdig.webp" 
+                        alt="Multimediedesigner" 
+                        class="image" 
+                        style="width: 100%"
+                    />
+                    <div class="middle">
+                        <button onclick="uddValg(1);" type="button" class="text">Vælg</button>
+                    </div>
+                </div>
+                <div class="container">
+                    <h4><b>Multimediedesigner</b></h4>
+                    <ul>
+                        <li>Varighed: 2 år</li>
+                        <li>Uddannelsen giver dig viden, færdigheder og kompetencer 
+                            inden for brugergrænsefladedesign og udvikling, 
+                            brugeroplevelser (UX), indholdsproduktion til 
+                            digitale medier, teknologi og forretningsforståelse</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="kort kolonne">
+                <div class="institution">
+                    <img onclick="uddValg(2);"
+                        src="images/uddannelse/markedsfærdig.webp" 
+                        alt="Markedsføringsøkonom" 
+                        class="image" 
+                        style="width: 100%"
+                    />
+                    <div class="middle">
+                        <button onclick="uddValg(2);" type="button" class="text">Vælg</button>
+                    </div>
+                </div>
+                <div class="container">
+                    <h4><b>Markedsføringsøkonom</b></h4>
+                    <ul>
+                        <li>Varighed: 2 år </li>
+                        <li>Du lærer, hvad der er relevant og vigtigt, 
+                            når virksomheder markedsfører deres produkter 
+                            og serviceydelser. Du får viden om relationer 
+                            til kunder, konkurrenter og samarbejdspartnere, 
+                            og du lærer om relevant lovgivning og økonomi</li>
+                    </ul>
+                </div>
+            </div>    
+        </div>
+    </section>
+
+    <!-- 6 UNIVERSITET VALG AF UDDANNELSE -->
+    <section id="UNI-udd">
+        <a href="#hero"><img class="lille-logo" src="images/logo-kort.svg" alt="Erhversakademiets logo"> </a>
+        <p class="overskrift_inf">Vælg uddannelse på AU</p>
+        <p class="trin">Trin 2</p>
+        <div class="begge_kort raekke">
+            <div class="kort kolonne">
+                <div class="institution">
+                    <img onclick="uddValg(3);"
+                        src="images/uddannelse/it-prodfærdig.webp"
+                        alt="IT-produktudvikling"
+                        class="image"
+                        style="width: 100%"
+                    />
+                    <div class="middle">
+                        <button onclick="uddValg(3);" type="button" class="text">Vælg</button>
+                    </div>
+                </div>
+                <div class="container">
+                    <h4><b>IT-produktudvikling</b></h4>
+                    <ul>
+                        <li>Varighed: 3 år </li>
+                        <li>Uddannelsen tager udgangspunkt i de tekniske 
+                            discipliner i informationsteknologien. Igennem 
+                            kurser i bl.a. softwareudvikling og produktdesign  
+                            lærer du at bruge teorierne inden for feltet og udvikle 
+                            dit bud på fremtidens smarte produkter</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="kort kolonne">
+                <div class="institution">
+                    <img onclick="uddValg(4);"
+                        src="images/uddannelse/infovidenfærdig.webp" 
+                        alt="Informationsvidenskab" 
+                        class="image" 
+                        style="width: 100%"
+                    >
+                    <div class="middle">
+                        <button onclick="uddValg(4);" type="button" class="text">Vælg</button>
+                    </div>
+                </div>
+                <div class="container">
+                    <h4><b>Informationsvidenskab</b></h4>
+                    <ul>
+                        <li>Varighed: 3 år</li>
+                        <li>Uddannelsen kvalificerer dig til at forholde dig til, 
+                            hvordan it og mennesker spiller sammen. Du opnår 
+                            viden og praktisk erfaring med at undersøge og forstå, 
+                            hvordan it og digitalisering former og forandrer samfundet</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="kort kolonne">
+                <div class="institution">
+                    <img onclick="uddValg(5);"
+                        src="images/uddannelse/kommufærdig.webp" 
+                        alt="International virksomhedskommunikation" 
+                        class="image" 
+                        style="width: 100%"
+                    />
+                    <div class="middle">
+                        <button onclick="uddValg(5);" type="button" class="text">Vælg</button>
+                    </div>
+                </div>
+                <div class="container">
+                    <h4><b>International virksomhedskommunikation</b></h4>
+                    <ul>
+                        <li>Varighed: 3 år </li>
+                        <li>Uddannelsen er internationalt orienteret og handler 
+                            om kommunikation på tværs af geografiske og kulturelle 
+                            grænser. Du får også viden om engelsktalende landes 
+                            markedsforhold og deres kultur-, erhvervs- og 
+                            samfundsforhold</li>
+                    </ul>
+                </div>
+            </div>  
+        </div>
+    </section>
+
+    <!-- 7 RESPONS PÅ VALG - FORKERT VALG -->
+    <section id="forkert_valg">
+        <a href="#hero"><img class="lille-logo" src="images/logo-kort.svg" alt="Erhversakademiets logo"> </a>
+        <p class="overskrift_inf">Du har desværre valgt forkert</p>
+        <p class="trin">Trin 3</p>
+
+        
+       <div id="boxforkert">            
+                
+                <div id="niclasked">
+                    <img class="skole-billede" src="" alt="">
+                </div>
+
+                <div id="forkerttekst">
+                    <p> Du har valgt at Niclas skal starte på uddannelsen: <b id="udd-navn">Uddannelsens navn</b><br><br>
+                        Det er han godt nok lidt ked af .. Husk at lyt efter dig selv, når det kommer til valg af uddannelse. 
+                        <br>Husk at vælg din uddannelse ud fra de rigtige parametre. <br>En stor procentdel falder fra hvis de ikke vælger en uddannelse som fanger deres faglige interesser, med et socialt miljø som passer dem. 
+                        <br><br>Mærk efter .. Det er trods alt din fremtid det drejer sig om!
+                        </p>
+                </div>
+
+        </div>
+                <div class="knapforkert">
+                    <button onclick="retry();" type="button" class="knap">PRØV IGEN</button>
+                </div>
+
+    </section> 
+    <!--SLUT PÅ FORKERT-->
+
+
+    <!-- 8 RIGTIGE VALG VIDEO -->
+    <section id="video-win">
+         <div class="video-container-done">
+            <video id="niclas-video-done">
+                <source src="images/multimus.webm" type="video/webm">
+            </video>
+            <div class="video_overlag_done">
+                <h2 class="overskrifter-done">DU HAR VUNDET</h2>
+                <button onclick="playVidDone(); removeOverlayDone();" type="button" class="knap-done">Se videoen!</button>
+            </div>
+            <div class="spil-overlay-done">
+                <button onclick="credits();" type="button" class="credit-knap">Credits</button>
+                <button onclick="replayVidDone();" type="button" class="replay-done">Afspil igen</button>
+            </div>
+            <button onclick="skipVidDone();" type="button" class="skip-done">Skip</button>
+        </div>
+    </section>
+
+    <!-- 9 Credits -->
+    <section>
+        <a href="javascript:window.location.reload();"><img class="lille-logo" src="images/logo-kort.svg" alt="Erhversakademiets logo"> </a>
+        <p class="overskrift_inf">Credits</p>
+       
+        <div id="creditsbox">
+            
+            <div id="tekst1">
+                <h2>Video produktion</h2>
+                <p><b>Hovedperson:</b> Niclas Palm <br>
+                    <b>Skrevet og instureret af:</b>  Andreas Deleuran Holm Nielsen <br>
+                  <b>Produceret af:</b> Victor Sletting <br>
+                  <b>Fotograf:</b>  Victor Sletting og Andreas Deleuran Holm Nielsen <br>
+                  <b>Belysningsmester og Grading:</b>  Rune Christoffersen <br>
+                  <b>Lyd og Musik: </b> Niclas Palm <br>
+                  <b>Produktions assistent:</b>    Rune Christoffersen 
+                  <br>
+                  <br>
+                <h2>Programmering</h2>
+                  
+                  <p id="tekst2">
+                    
+                      
+                  
+                  <b>HTML opsætning:</b>  Andreas, Rune, Niclas og Victor <br> 
+                  <b>CSS styling:</b>    Andreas, Rune, Niclas og Victor <br>  
+                  <b>Javascript strukturering:</b>  Andreas Deleuran Holm Nielsen <br>  
+                  <b>Javascript udvikling:</b> Andreas, Rune, Niclas og Victor <br>
+                  <b>SEO og page load time:</b> Niclas Palm<br>
+                </p>
+                <h2>Design</h2>
+                  
+                  <p id="tekst2">
+                  <b>Wireframes:</b>  Andreas, Rune, Niclas og Victor <br> 
+                  <b>XD Mockups:</b>    Andreas, Rune, Niclas og Victor <br>  
+                  <b>Grafiske elementer:</b>  Andreas, Rune, Niclas og Victor <br>  
+                  <b>Billed redigering:</b> Niclas Palm <br>
+                  <b>Creative brief:</b> Andreas, Rune, Niclas og Victor<br>
+                  <b>Visuel identitet:</b> Andreas, Rune, Niclas og Victor<br>
+                </p>
+                <h2>UX/UI</h2>
+                  
+                <p id="tekst2">
+                <b>Research:</b>  Andreas, Rune, Niclas og Victor <br> 
+                <b>Analyse data:</b>    Andreas, Rune, Niclas og Victor <br>  
+                <b>Persona</b>  Andreas, Rune, Niclas og Victor <br>  
+                <b>Målgruppe segmentering</b> Andreas, Rune, Niclas og Victor <br>
+               
+              </p>
+            </p>  
+            </div>
+            
+
+        </div>
+     
+    </section>
+
+    <div id="stifinder">
+        <video id="stifinder-vid" muted>
+            <source src="" type="video/webm">
+        </video>
+    </div>
+
+    <!-- MEDIA 750 PX -->
+    <div id="mobiloverlag">
+        <h2>VEND TELEFONEN 90°</h2>
+
+        <div id="flipbilleder">
+        </div>
+        <p>Hov ... Du skal lige vippe telefonen engang gamle dreng.</p>
+
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

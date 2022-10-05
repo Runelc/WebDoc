@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80.04 91.26">
+	<defs>
+		<style>
+			.e{fill:transparent;stroke:#57b6ca;stroke-miterlimit:10;stroke-width:2px;}
+		</style>
+	</defs>
+	<g id="a" />
+	<g id="b">
+		<g id="c">
+			<path id="d" class="e" d="M45.63,.75V90.51h11.22V.75h-11.22ZM23.19,11.97V79.29h11.22V11.97h-11.22Zm44.88,11.22v44.88h11.22V23.19h-11.22ZM.75,34.41v22.44H11.97v-22.44H.75Z" />
+		</g>
+	</g>
+</svg>

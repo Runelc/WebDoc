@@ -1,0 +1,964 @@
+:root {
+    --lightgrey: #f3f4f7;
+    --blue: #57b6ca;
+    --greyblue: #e4e6ed;
+    --darkblue: #1a4860;
+    --grey: #727272;
+    --hoverblue: #399fb6;
+}
+
+/* Overflow hidden på body, forhindrer scroll */
+body {
+    font-family: din-2014, sans-serif;
+    --margin: 25px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    font-size: 16px; 
+}
+
+section {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh;
+    position: relative;
+}
+
+.logo_langt {
+    width: 380px;
+    height: auto;
+    display: block;
+    margin: 0 auto 30px auto;
+    padding-top: var(--margin);
+}
+
+.overskrifter {
+    color: #57B6CA;
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: 5000px;
+   /*  font-weight: 550px; */
+    font-weight: lighter;
+}
+  
+  /* Karrusel start */ 
+.karrusel{
+  margin: var(--margin) auto 100px auto;
+  max-height: 400px;
+  height: 55vh;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  overflow: hidden;
+  animation: changeBg 4s steps(1) infinite;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+  
+@keyframes changeBg{
+    0%, 100% {background-image: url("../images/karrusel/aarhus_uni.webp");}
+    25% {background-image: url("../images/karrusel/eaaa.webp");}
+    50% {background-image: url("../images/karrusel/journalist.webp");}
+    75%  {background-image: url("../images/karrusel/via.webp");}
+ }
+
+.HP_Tale{
+  position: absolute;
+  margin: 0 auto;
+  width: 200px;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+
+}
+
+.HP_SOLO {
+  padding: 0;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  height: 90%;
+  width: 90%;
+}
+
+.karrusel:hover .HP_SOLO {
+    animation: shake 0.3s;
+  }
+
+  .talebobble {
+      position: absolute;
+      width: 400px; 
+      height: 120px; 
+      top: -5%;
+      right: -70%;
+      display: none; 
+  }
+
+  .karrusel:hover .talebobble {
+      display: block; 
+  }
+ 
+  @keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+
+  
+
+/* Karrusel slut */ 
+
+#bubbles {
+    position: fixed;
+    width: 20px;
+    height: max-content;
+    right: var(--margin);
+    top: 50vh;
+    transform: translateY(-50%);
+    border-radius: 99999px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 99999;
+}
+
+.bubble {
+    width: 10px;
+    height: 10px;
+    background-color: var(--greyblue);
+    margin: 5px 0;
+    border-radius: 50%;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.bubble:hover{
+  background-color: var(--grey)
+}
+
+.currentPage {
+  background-color: var(--blue) !important;
+  width: 15px;
+  height: 15px;
+  cursor: default;
+  pointer-events: none;
+}
+
+.pil{
+  width: 70px;
+  cursor: pointer;
+  padding: 8px 10px;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: pilAnim 2s ease-in-out infinite;
+}
+
+@keyframes pilAnim {
+  from{
+    bottom: 5px;
+  }
+  50%{
+    bottom: 10px;
+  }
+}
+
+.pil > .arrow{
+  fill:none;
+  stroke:#57b6ca;
+  stroke-miterlimit:10;
+  stroke-width:30px;
+  animation: anim 2s ease-in-out infinite;
+}
+
+@keyframes anim{
+  from{
+      stroke:#57b6ca;
+      stroke-width:30px;
+  }
+  50%{
+      stroke:#cbcdce;
+      stroke-width:25px;
+  }
+}
+
+
+.pil:hover{
+  background-color: var(--greyblue);
+}
+
+.klik-her{
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: var(--blue);
+}
+
+#intro{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 99999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--lightgrey);
+  transition: 0.40s;
+
+}
+#intro video{
+  width: 50%;
+}
+
+.videoFade{
+  transform: translateY(-100%);
+}
+
+/* INTRO VIDEO CSS */ 
+#niclas-video {
+  margin: 0 auto;
+  padding: 0;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.video-container  {
+  width: fit-content;
+  height: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+}
+
+#video {
+  background-color: var(--lightgrey);
+}
+
+.video_overlag {
+  position: absolute; 
+  text-align: center;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.400);
+}
+
+.video_overlag h2 {
+  font-size: 5.5rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 200px;
+  padding: 0;
+}
+
+.knap {
+  transition: 0.2s;
+  cursor: pointer;
+  display: block;
+  background-color: var(--blue);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 1.2rem;
+  margin-bottom: 200px;
+  height: fit-content;
+}
+
+.knap:hover {
+  background-color: var(--hoverblue);
+  font-size: 1.3rem;
+}
+
+.spil-overlay {
+  transition: 0.4s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  opacity: 0;
+  justify-content: flex-end;
+  align-items:center;
+  flex-direction: column;
+  transform: translateY(100%);
+}
+.spil-overlay > .knap {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.show-spil-overlay {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.replay {
+  display: block;
+  height: fit-content;
+  margin-bottom: 150px;
+  border: none;
+  background-color: var(--grey);
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  color: white;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.replay:hover {
+  opacity: 1;
+}
+.skip {
+  transition: 0.2s;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  outline: 1px solid white;
+  color: white;
+  padding: 3px 10px;
+  cursor: pointer;
+  opacity: 0.2;
+  display: none;
+}
+.skip:hover {
+  opacity: 1;
+}
+
+/* Sektion 4 Info om Niclas */ 
+
+.overskrift_inf {
+  margin-top: var(--margin);
+  font-size: 3rem; 
+  text-align: center;
+  font-weight: 800;
+}
+
+.HP_kort {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  max-width: 500px;
+  min-width: 300px;
+  width: 50%;
+  margin: 10px 10px;
+}
+
+.kort {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  max-width: 500px;
+  min-width: 300px;
+  width: 50%;
+  margin: 10px 10px;
+}
+
+.kort:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  transform: scale(1.01);
+}
+
+.container {
+  padding: 8px 16px;
+}
+
+.begge_kort {
+  display: flex; 
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 2%;
+  overflow-y: auto;
+  max-height: 75vh;
+}
+
+.kort ul{
+  padding-left: 16px;
+}
+
+
+#spille_regler{
+  height: 100%;
+  width: 100%;
+}
+
+#spille_regler h2{
+  text-align: center;
+  margin: var(--margin) auto 0 auto;
+  padding-bottom: 15px;
+  font-size: 3rem;
+}
+
+#spille_regler h3{
+  text-align: center;
+  margin: 0 auto var(--margin) auto;
+  padding-bottom: var(--margin);
+  font-size: 1.5rem;
+}
+
+.forklaring{
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.171);
+  padding: 60px 100px;
+  margin: auto;
+  margin-bottom: 50px;
+  height: 55%;
+  overflow-y: scroll;
+  position: relative;
+  
+}
+
+#ikon-container{
+  display: flex;
+  width: 100%;
+  margin: 0 auto 0 auto;
+}
+
+.ikon{
+  height: 50px;
+  margin-bottom: 0.5rem;
+}
+
+.video-ikon, .lyd-ikon, .klik-ikon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+.lyd-ikon{
+  margin: 0 auto;
+}
+.forklaring-tekst{
+  font-size: 1rem;
+}
+
+.next-rule, .prev-rule{
+  width: 55px;
+  cursor: pointer;
+  padding: 8px 10px;
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%) rotateZ(-90deg);
+  z-index: 999;
+  animation: nextRule 1s ease-in-out forwards infinite;
+}
+
+.prev-rule{
+  transform: translateY(-50%) rotateZ(90deg);
+  left: 0;
+  animation: prevRule 1s ease-in-out forwards infinite;
+}
+
+.rule-arrow{
+  fill:none;
+  stroke:#57b6ca;
+  stroke-miterlimit:10;
+  stroke-width:30px;
+}
+
+@keyframes nextRule {
+  from{
+    right: -5px;
+  }
+  50%{
+    right: -0px;
+  }
+}
+
+@keyframes prevRule {
+  from{
+    left: 0px;
+  }
+  50%{
+    left: 5px;
+  }
+}
+
+#tree-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#tree-container img{
+  display: block;
+  width: 150px;
+  height: auto;
+  margin: 0 40px 0 0;
+}
+
+#tree{
+  opacity: 0;
+  transform: translateX(200%);
+  transition: 0.3s;
+  display: none;
+}
+
+#ikoner{
+  transition: 0.3s;
+}
+
+.show-tree{
+  opacity: 1!important;
+  transform: translateX(0%)!important;
+}
+
+.hide-ikoner{
+  opacity: 0!important;
+  transform: translateX(-200%)!important;
+}
+
+.scene-skift{
+  display: block;
+  width: 0vw;
+  height: 0vw;
+  position: fixed;
+  background-color: var(--blue);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: scene-skift 1.1s ease-in-out forwards;
+  z-index: 9999999;
+}
+
+@keyframes scene-skift {
+  0%{
+    width: 0vw;
+    height: 0vw;
+  }
+  33%{
+    width: 150vw;
+    height: 150vw;
+  }
+  66%{
+    width: 150vw;
+    height: 150vw;
+  }
+  100%{
+    width: 0vw;
+    height: 0vw;
+  }
+}
+
+.trin {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(---blue); 
+}
+
+.institution {
+  position: relative;
+  width: 100%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  cursor: pointer; 
+}
+
+/* Hover over billede af institutioner */ 
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  cursor: pointer;
+}
+
+.institution:hover .image {
+  opacity: 0.3;
+}
+
+.institution:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #57b6ca;
+  color: white;
+  font-size: 1rem;
+  padding: 16px 32px;
+  border: none; 
+  cursor: pointer; 
+}
+
+/**** VALG AF UDDANNELSE ****/ 
+
+/* dobbelt CLASS - Container i "valg af uddannelse */ 
+.raekke {
+  display: flex;
+  padding: 50px;
+}
+
+/* dobbelt CLASS - Hvert enkelte kort i "valg af uddannelse */ 
+.kolonne {
+  flex: 33.33%;
+  max-width: 370px!important;
+  min-width: 0!important;
+  width: 20%!important;
+  margin: 0px!important; 
+}
+
+/**** Forkert valg side *****/
+#boxforkert {
+  margin: 0 auto; 
+  margin-top: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  width: 80%; 
+  display: flex;   
+}
+
+
+#forkerttekst {
+  font-size: 1.3rem;
+  padding-left: 30px;
+  padding-right: 30px; 
+  margin-top: 10px; 
+}
+
+/* Forkert Knap valg - prøv igen */
+
+.knapforkert {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;  
+}
+
+
+/* RIGTIGE VALG VIDEO */
+#niclas-video-done {
+  margin: 0 auto;
+  padding: 0;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.video-container-done  {
+  width: fit-content;
+  height: 100%;
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+}
+
+#video {
+  background-color: var(--lightgrey);
+}
+
+.video_overlag_done {
+  position: absolute; 
+  text-align: center;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.400);
+}
+
+.video_overlag_done h2 {
+  font-size: 5.5rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 200px;
+  padding: 0;
+}
+
+.knap-done, .credit-knap {
+  transition: 0.2s;
+  cursor: pointer;
+  display: block;
+  background-color: var(--blue);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  font-size: 1.2rem;
+  margin-bottom: 200px;
+  height: fit-content;
+}
+
+.credit-knap {
+  background-color: var(--lightgrey);
+  color: black;
+  margin-bottom: 20px;
+}
+
+.credit-knap:hover{
+  background-color: #cbcdce;
+}
+
+.knap-done:hover {
+  background-color: var(--hoverblue);
+}
+
+.spil-overlay-done {
+  transition: 0.4s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  opacity: 0;
+  justify-content: flex-end;
+  align-items:center;
+  flex-direction: column;
+  transform: translateY(100%);
+}
+.spil-overlay-done > .knap-done {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.show-spil-overlay-done {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.replay-done {
+  display: block;
+  height: fit-content;
+  margin-bottom: 150px;
+  border: none;
+  background-color: var(--grey);
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  color: white;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.replay-done:hover {
+  opacity: 1;
+}
+.skip-done {
+  transition: 0.2s;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  outline: 1px solid white;
+  color: white;
+  padding: 3px 10px;
+  cursor: pointer;
+  opacity: 0.6;
+  display: none;
+}
+.skip-done:hover {
+  opacity: 1;
+}
+
+
+/* Credits css */
+#creditsbox {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 50px;
+  justify-content: space-between;
+  width: 60%;
+  height: 70%;
+  overflow-y: scroll;
+  background-color: var(--blue);
+  /* box-shadow: 10px 10px 5px 12px rgba(87, 183, 202, 0.336); */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  
+}
+
+
+#creditsbox h3, #creditsbox h2 {
+  display: flex; 
+  justify-content: center;
+  padding-top: 10px;
+  color: rgb(0, 0, 0);
+  font-size: 2rem;
+
+}
+.tekstcredits {
+  color: white;
+}
+
+#tekst1 {
+  margin: 0% auto;
+  font-size: 1.5rem;
+  color: white;
+
+
+}
+
+#tekst1 b {
+  color: black;
+}
+#tekst2 h3 {
+  color: rgb(0, 0, 0);
+  font-size: 2rem;
+
+
+  
+}
+#tekst2 {
+  padding-bottom: 20px;
+}
+
+
+
+/* Stifinder styling */
+
+#stifinder{
+  position: fixed;
+  left: 0;
+  top: -100%;
+  width: 100vw;
+  height: 0;
+  background-color: var(--lightgrey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999;
+  transition: 0.5s ease;
+}
+
+#stifinder-vid{
+  aspect-ratio: 1;
+  width: 100%;
+  height: 100%;
+  max-width: 600px;
+  max-height: 600px;
+}
+
+.stifinderAnim{
+  height: 100vh!important;
+  top: 0!important;
+}
+
+.lille-logo{
+  position: absolute;
+  top: 20px;
+  left: var(--margin);
+  width: 120px;
+  padding: 0;
+}
+
+/* Mobil overlag */
+#mobiloverlag {
+  display: none; 
+}
+
+/***** Mobil starter her ******/
+@media screen and (max-width: 400px){
+  body{
+    --margin: 15px;
+  }
+  .overskrifter{
+    font-size: 1.4rem;
+  }
+  .logo_langt{
+    width: 300px;
+  }
+
+}
+
+/***** Udannelses valg responsivt******/
+@media screen and (max-width: 1040px) {
+  .raekke {
+    display: block;
+  }
+  
+  .kolonne {
+    max-width: 500px!important;
+    width: 100%!important;
+    margin: 20px auto!important; 
+  }
+}
+
+/* Flip telefon */
+@media only screen and (max-width: 750px) {
+  #mobiloverlag {
+    display: flex;
+    z-index: 99999999999;
+    position: fixed;
+    width: 100vw; 
+    height: 100vh; 
+    top: 0; 
+    left: 0;
+    background-color: var(--lightgrey);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;  
+  }
+  #mobiloverlag h2 {
+    display: flex; 
+    justify-content: center;
+    padding-top: 1vw;
+    font-size: 1.5rem;
+    padding-bottom: 5vw; 
+  }
+  #mobiloverlag p {
+    font-size: 1.2rem; 
+  }
+
+  #flipbilleder {
+    animation: flipphone 3s steps(1) infinite;
+    width: 100%;
+    height: 100%;  
+    max-width: 350px;
+    max-height: 450px;
+    background-size: 100%;
+    background-repeat: no-repeat;       
+  }
+
+  @keyframes flipphone {
+    0% {
+      background-image: url("../images/flipopdone.webp"); 
+    }
+    50% {
+      background-image: url("../images/flipneddone.webp");
+    }
+}
+}
+
+@media screen and (max-width: 1000px) {
+  body {
+    font-size: 13px!important; 
+  }
+  
+  .overskrift_inf {
+    font-size: 2.4rem!important; 
+  }
+  
+}
